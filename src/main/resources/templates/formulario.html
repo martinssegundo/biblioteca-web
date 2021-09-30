@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="header :: head">
+<meta charset="utf-8">
+</head>
+<body>
+	<div class="container">
+		<div th:insert="~{index :: image-top}"></div>
+		
+		<h1>
+			<span th:text="${mensagem}"></span>
+		</h1>
+		
+		<br/>
+		<a href="/" >Voltar</a>
+		<br/>
+		
+		<form action="salvar" method="post">
+
+			<label>Titulo</label> 
+			<input id="titulo" name="titulo" th:value="${livro.titulo}"
+				type="text" class="form-control form-control-lg"><br /> 
+				
+			<label>Autor</label>
+			<input id="autor" name="autor" th:value="${livro.autor}" type="text"
+				class="form-control form-control-lg"> <br />
+				
+			<label>Código</label>
+			<input id="codigo" name="codigo" th:value="${livro.codigo}" type="number"
+				class="form-control form-control-lg"> <br />
+			
+			<label>Editora</label>
+			<input id="editora" name="editora" th:value="${livro.editora}" type="text"
+				class="form-control form-control-lg"> <br />
+				
+			<input type="hidden" id="id" name="id" th:value="${livro.id}" th:if="${livro != null}"/>
+
+			<button type="submit" class="btn btn-primary">Salvar</button>
+
+		</form>
+
+		<div th:insert="~{footer :: copy}"></div>
+	</div>
+	<script th:insert="header :: scriptBootstrap"></script>
+</body>
+</html>
